@@ -1,6 +1,6 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Dtos;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SiliconWebbApi.Filters;
@@ -10,7 +10,7 @@ namespace SiliconWebbApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-//[UseApiKey]
+
 
 public class SubscriberController(Datacontext context) : ControllerBase
 {

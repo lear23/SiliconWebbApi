@@ -1,10 +1,4 @@
-﻿
-
-
-
-
-
-using Infrastructure.Entities;
+﻿using Infrastructure.Entities;
 using SiliconWebbApi.Model;
 
 namespace SiliconWebbApi.Factories;

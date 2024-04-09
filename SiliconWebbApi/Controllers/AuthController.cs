@@ -9,15 +9,9 @@ namespace SiliconWebbApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AuthController : ControllerBase
+public class AuthController(IConfiguration configuration) : ControllerBase
 {
-    private readonly IConfiguration _configuration;
-
-    public AuthController(IConfiguration configuration)
-    {
-        _configuration = configuration;
-    }
-
+    private readonly IConfiguration _configuration = configuration;
 
     [HttpPost]
 
