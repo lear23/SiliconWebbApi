@@ -1,6 +1,6 @@
 ﻿
 
-namespace SiliconWebbApi.Model;
+namespace Infrastructure.Model;
 
 public class CategoryModel
 {

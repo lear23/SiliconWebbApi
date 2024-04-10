@@ -4,7 +4,7 @@ namespace Infrastructure.Dtos;
 
 public class CoursesDto
 {
-  
+
     public string Title { get; set; } = null!;
 
     public string? Author { get; set; }

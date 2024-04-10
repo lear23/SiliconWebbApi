@@ -1,9 +1,9 @@
 ﻿
 using Infrastructure.Contexts;
+using Infrastructure.Factories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SiliconWebbApi.Factories;
-using SiliconWebbApi.Filters;
+
 
 
 namespace SiliconWebbApi.Controllers;

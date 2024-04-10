@@ -1,7 +1,10 @@
-﻿using Infrastructure.Entities;
-using SiliconWebbApi.Model;
+﻿
 
-namespace SiliconWebbApi.Factories;
+
+using Infrastructure.Entities;
+using Infrastructure.Model;
+
+namespace Infrastructure.Factories;
 
 public class CategoryFactory
 {

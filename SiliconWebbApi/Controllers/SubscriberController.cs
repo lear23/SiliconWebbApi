@@ -93,25 +93,49 @@ public class SubscriberController(Datacontext context) : ControllerBase
 
     #endregion
 
-
     #region DELETE
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(string id)
     {
-        var subscriber = await _context.Subscribers.FirstOrDefaultAsync(x => x.Id == id);
-
-        if (subscriber != null)
+        if (ModelState.IsValid)
         {
+            var subscriber = await _context.Subscribers.FirstOrDefaultAsync(x => x.Id == id);
 
-            _context.Subscribers.Remove(subscriber);
-            await _context.SaveChangesAsync();
+            if (subscriber != null)
+            {
 
-            return Ok();
+                _context.Subscribers.Remove(subscriber);
+                await _context.SaveChangesAsync();
+
+                return Ok();
+            }
+            return NotFound();
         }
-        return NotFound();
+        return BadRequest();
+        
     }
 
     #endregion
-
+ 
 
 }
+
+
+//#region DELETE
+//[HttpDelete("{id}")]
+//public async Task<IActionResult> Delete(string id)
+//{
+//    var subscriber = await _context.Subscribers.FirstOrDefaultAsync(x => x.Id == id);
+
+//    if (subscriber != null)
+//    {
+
+//        _context.Subscribers.Remove(subscriber);
+//        await _context.SaveChangesAsync();
+
+//        return Ok();
+//    }
+//    return NotFound();
+//}
+
+//#endregion
