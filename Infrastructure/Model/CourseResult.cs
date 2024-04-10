@@ -1,0 +1,12 @@
+﻿
+
+namespace Infrastructure.Model;
+
+public class CourseResult
+{
+
+    public bool Succeeded { get; set; }
+
+    public IEnumerable<CourseModel>? Courses { get; set; }
+
+}

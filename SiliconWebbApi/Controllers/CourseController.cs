@@ -2,6 +2,8 @@
 using Infrastructure.Contexts;
 using Infrastructure.Dtos;
 using Infrastructure.Entities;
+using Infrastructure.Factories;
+using Infrastructure.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -55,13 +57,25 @@ public class CourseController(Datacontext context) : ControllerBase
 
 
     #region GET
+
+    //[HttpGet]
+
+    //public async Task<IActionResult> GetAll()
+    //{
+    //    var courses = await _context.Courses.ToListAsync();
+    //    return Ok(courses);
+    //}
+
+
     [HttpGet]
- 
     public async Task<IActionResult> GetAll()
     {
-        var courses = await _context.Courses.ToListAsync();
+        var query = _context.Courses.Include(i => i.Category).AsQueryable();
+        query = query.OrderByDescending(o => o.LastUpdated);
+        var courses = await query.ToListAsync();
         return Ok(courses);
     }
+
 
 
 
