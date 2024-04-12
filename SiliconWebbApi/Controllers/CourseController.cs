@@ -4,11 +4,9 @@ using Infrastructure.Dtos;
 using Infrastructure.Entities;
 using Infrastructure.Factories;
 using Infrastructure.Model;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using SiliconWebbApi.Filters;
+
 
 
 namespace SiliconWebbApi.Controllers;
@@ -60,12 +58,15 @@ public class CourseController(Datacontext context) : ControllerBase
     #region GET
 
     [HttpGet]
-    public async Task<IActionResult> GetAll(string category = "")
+    public async Task<IActionResult> GetAll(string category = "", string searchQuery = "")
     {
         var query = _context.Courses.Include(i => i.Category).AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(category) && category != "all")
              query = query.Where(x => x.Category!.CategoryName == category);
+
+        if (!string.IsNullOrWhiteSpace(searchQuery))
+            query = query.Where(x => x.Title.Contains(searchQuery) || x.Author!.Contains(searchQuery));
 
 
         query = query.OrderByDescending(o => o.LastUpdated);
